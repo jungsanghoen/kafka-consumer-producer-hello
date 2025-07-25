@@ -1,0 +1,11 @@
+server:
+  port: 18889
+
+management:
+  metrics:
+    tags:
+      application: "${app.name}"
+  endpoints:
+    web:
+      exposure:
+        include: "*"
