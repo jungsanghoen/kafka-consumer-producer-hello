@@ -4,16 +4,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>kr.or.example</groupId>
-    <artifactId>kafkaConsumeProducer</artifactId>
+    <artifactId>kafka-consumer-producer-hello</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>kafkaConsumeProducer</name>
+    <name>kafka-consumer-producer-hello</name>
     <description>Demo project for Spring Boot</description>
 
     <modules>
-        <module>KafkaConsumer</module>
-        <module>KafkaProducer</module>
+        <module>kafka-consumer-batch</module>
+        <module>kafka-consumer-record</module>
+        <module>kafka-producer</module>
     </modules>
 
     <properties>

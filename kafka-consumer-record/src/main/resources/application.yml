@@ -1,0 +1,11 @@
+server:
+  port: 18888
+
+management:
+  metrics:
+    tags:
+      application: "${spring.application.name}"
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus, info, health"

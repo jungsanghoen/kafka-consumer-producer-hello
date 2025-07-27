@@ -5,13 +5,13 @@
 	<!-- parent 프로젝트 참조 -->
 	<parent>
 		<groupId>kr.or.example</groupId>
-		<artifactId>kafkaConsumeProducer</artifactId>
+		<artifactId>kafka-consumer-producer-hello</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>kr.or.exmaple</groupId>
-	<artifactId>kafkaProducer</artifactId>
+	<artifactId>kafka-consumer-record</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>kafkaProducer</name>
+	<name>kafka-consumer-record</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -37,10 +37,6 @@
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>

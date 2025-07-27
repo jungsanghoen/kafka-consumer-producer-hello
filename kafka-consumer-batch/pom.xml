@@ -5,13 +5,13 @@
 	<!-- parent 프로젝트 참조 -->
 	<parent>
 		<groupId>kr.or.example</groupId>
-		<artifactId>kafkaConsumeProducer</artifactId>
+		<artifactId>kafka-consumer-producer-hello</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>kr.or.exmaple</groupId>
-	<artifactId>kafkaConsumer</artifactId>
+	<artifactId>kafka-consumer-batch</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>kafkaConsumer</name>
+	<name>kafka-consumer-batch</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
