@@ -9,3 +9,13 @@ management:
     web:
       exposure:
         include: "prometheus, info, health"
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        linger.ms : 1       # batch 전송 주기 종료 ms .
+        batch.size : 10     # 한번에 몰아서 보낼 batch 사이즈. key가 없는 경우 파티션을 돌아가면서 사용하는걸 보여주기 위해서 size를 작게 했다.
