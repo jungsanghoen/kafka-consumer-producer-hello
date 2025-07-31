@@ -104,7 +104,7 @@ cd kafka-consumer-record && ../mvnw spring-boot:run
 ### 1. 기본 메시지 전송 (Key 없음)
 
 **엔드포인트**: `POST /putdata`
-
+ - windows 의 경우 git bash 이용하세요.
 ```bash
 curl -X POST http://localhost:18889/putdata \
   -H "Content-Type: application/json" \
@@ -133,16 +133,11 @@ Data sent successfully with api_tran_id: 550e8400-e29b-41d4-a716-446655440000
 ### 2. Key 기반 메시지 전송
 
 **엔드포인트**: `POST /putdata-with-key`
-
+- windows 의 경우 git bash 이용하세요.
 ```bash
-curl -X POST http://localhost:18889/putdata-with-key \
-  -H "Content-Type: application/json" \
-  -d '{
-    "key": "user123",
-    "name": "김철수",
-    "age": 30,
-    "email": "kimcs@example.com"
-  }'
+curl -X POST http://localhost:18889/putdata-with-key ^
+  -H "Content-Type: application/json" ^
+  -d '{ "key": "user123",  "name": "김철수",   "age": 30,  "email": "kimcs@example.com" }'
 ```
 - 특히 sample.batch.topic 한개만 partition을 4개로 하면 key에 따라
 partiion 변화를 확인할 수 있음
@@ -157,7 +152,7 @@ Data sent successfully with key: user123 and api_tran_id: 550e8400-e29b-41d4-a71
 - `key` 필드가 없거나 null인 경우 400 에러 반환
 
 ### 3. 복잡한 JSON 구조 예시
-
+- windows 의 경우 git bash 이용하세요.
 ```bash
 curl -X POST http://localhost:18889/putdata \
   -H "Content-Type: application/json" \
@@ -277,7 +272,8 @@ export JAVA_HOME="/path/to/java-21"
 
 ### 포트 충돌
 - kafka-producer: 18889 포트 사용
-- kafka-consumer-batch, kafka-consumer-record: 18888 포트 사용 (동시 실행 불가)
+- kafka-consumer-batch : 18888 포트 사용
+- kafka-consumer-record: 18887 포트 사용
 
 ## 📈 확장 가능성
 

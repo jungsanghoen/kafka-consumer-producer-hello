@@ -1,5 +1,6 @@
 package kr.or.exmaple.kafkaConsume.listener;
 
+import io.micrometer.core.instrument.MeterRegistry;
 import kr.or.exmaple.kafkaConsume.service.MessageReceiveService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,6 +46,12 @@ public class KafkaRecordListener {
      * 생성자 주입을 통해 의존성 주입됨
      */
     private final MessageReceiveService messageReceiveService;
+    
+    /**
+     * Micrometer 메트릭 레지스트리
+     * Prometheus 메트릭 수집을 위해 사용
+     */
+    private final MeterRegistry meterRegistry;
 
     /**
      * Kafka 레코드별 메시지 수신 리스너 메서드
@@ -75,6 +82,9 @@ public class KafkaRecordListener {
     public void listen(String message) {
         // 개별 메시지 수신 로깅 - 처리 시작을 알림
         log.info("Received single message from topic: sample.record.topic");
+        
+        // 메트릭 카운트 - 개별 메시지 1개씩 증가
+        meterRegistry.counter("custom-kafka-consume", "topic", "sample.record.topic").increment();
         
         // 실제 비즈니스 로직은 서비스 레이어에 위임
         // 관심사 분리(Separation of Concerns) 원칙 적용

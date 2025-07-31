@@ -1,5 +1,6 @@
 package kr.or.exmaple.kafkaProducer.service;
 
+import io.micrometer.core.instrument.MeterRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -33,6 +34,12 @@ public class KafkaProducerService {
      * application.yml의 kafka.producer 설정을 사용
      */
     private final KafkaTemplate<String, String> kafkaTemplate;
+    
+    /**
+     * Micrometer 메트릭 레지스트리
+     * Prometheus 메트릭 수집을 위해 사용
+     */
+    private final MeterRegistry meterRegistry;
 
     /**
      * sample.batch.topic으로 Key 없이 메시지 전송
@@ -44,6 +51,7 @@ public class KafkaProducerService {
      */
     public void sendToBatchTopic(String message) {
         kafkaTemplate.send("sample.batch.topic", message);
+        meterRegistry.counter("custom-kafka-produce", "topic", "sample.batch.topic").increment();
         log.info("Message sent to sample.batch.topic: {}", message);
     }
 
@@ -57,6 +65,7 @@ public class KafkaProducerService {
      */
     public void sendToRecordTopic(String message) {
         kafkaTemplate.send("sample.record.topic", message);
+        meterRegistry.counter("custom-kafka-produce", "topic", "sample.record.topic").increment();
         log.info("Message sent to sample.record.topic: {}", message);
     }
 
@@ -72,6 +81,7 @@ public class KafkaProducerService {
      */
     public void sendToBatchTopic(String key, String message) {
         kafkaTemplate.send("sample.batch.topic", key, message);
+        meterRegistry.counter("custom-kafka-produce", "topic", "sample.batch.topic").increment();
         log.info("Message sent to sample.batch.topic with key {}: {}", key, message);
     }
 
@@ -87,6 +97,7 @@ public class KafkaProducerService {
      */
     public void sendToRecordTopic(String key, String message) {
         kafkaTemplate.send("sample.record.topic", key, message);
+        meterRegistry.counter("custom-kafka-produce", "topic", "sample.record.topic").increment();
         log.info("Message sent to sample.record.topic with key {}: {}", key, message);
     }
 }
